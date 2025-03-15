@@ -64,10 +64,28 @@ def palindrome():
         print(f"{user} is not a paladrome")
 
 
-def wordcounter():
-    string=input("Enter a sentence: ")
-    counter=string.split()
-    print("Total word: ",len(counter))
+def word_count():
+    word_list = ["the","was","and"]
+    count = {"the":0,"and":0,"was":0}
+    file=input("Enter file name: ")
+    with open(file, 'r') as f:
+        file1=f.read()
+        file1=file1.lower()
+        words=file1.split()
+
+        for word in words:
+            if word=="the":
+                count["the"]+=1
+            elif word=="and":
+                count["and"]+=1
+            elif word=="was":
+                count["was"]+=1
+      
+    print(f"word count for 'the' is:{count['the']}")
+    print(f"word count for 'was' is:{count['was']}")
+    print(f"word count for 'and' is:{count['and']}")
+
+
 
 
 
@@ -98,7 +116,7 @@ while True:
     elif user_choice==5:
         palindrome()
     elif user_choice==6:
-        wordcounter()
+        word_count()
        
     else:
         print("invalid")
